@@ -1,0 +1,17 @@
+diff --git a/components/esp_system/ld/esp32/sections.ld.in b/components/esp_system/ld/esp32/sections.ld.in
+index c2a6c66c5b..815af6e253 100644
+--- a/components/esp_system/ld/esp32/sections.ld.in
++++ b/components/esp_system/ld/esp32/sections.ld.in
+@@ -321,6 +321,12 @@ SECTIONS
+     *(.tbss.*)
+     _thread_local_end = ABSOLUTE(.);
+     . = ALIGN(4);
++
++    _shell_command_start = ABSOLUTE(.);
++    KEEP (*(shellCommand))
++    _shell_command_end = ABSOLUTE(.);
++    . = ALIGN(4);
++    
+   } >default_rodata_seg
+ 
+   _flash_rodata_align = ALIGNOF(.flash.rodata);
